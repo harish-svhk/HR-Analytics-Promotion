@@ -11,8 +11,9 @@ A large MNC and they have 9 broad verticals across the organisation. One of the 
 They first identify a set of employees based on recommendations/ past performance Selected employees go through the separate training and evaluation program for each vertical. These programs are based on the required skill of each vertical At the end of the program, based on various factors such as training performance, KPI completion (only employees with KPIs completed greater than 60% are considered) etc., employee gets promotion For above mentioned process, the final promotions are only announced after the evaluation and this leads to delay in transition to their new roles. Hence, company needs your help in identifying the eligible candidates at a particular checkpoint so that they can expedite the entire promotion cycle.
 
 ### DATA
+
 | Column Name          | Description                                                                                   |
-| -------------        |:-------------                                                                                :| 
+| -------------        | -------------                                                                                 | 
 | employee_id	         | Unique ID for employee                                                                        | 
 | department	         | Department of employee                                                                        |  
 | region               | Region of employment (unordered)                                                              | 
@@ -47,6 +48,8 @@ They first identify a set of employees based on recommendations/ past performanc
 - Missing values found in education and prev year rating
 - Fill previous rating with mean prev ratings and education with mode value of education - group by promotion
 - Gender categorie and Education is easily mapped into numerical ones
+- Encode all categorical variables
+- Transform Data using MinMaxScaler
 
 <p align="left">
   <img width="400" height="150" src="images/1.PNG">
@@ -86,47 +89,17 @@ We see again from the correlation heatmap that almost all the variables are not 
 The variables with the highest correlation (0.22 and 0.20 respectively) is whether the KPI is met and whether an award was won.  
 </p>
 
-- __Swarm Plot:__ Pathologic staging / Survived Distribution
-<p align="left">
-  <img width="800" height="300" src="images/output_62_1.png">
+- __Model Evalution__
+
+<p align="
+left">
+  <img width="800" height="300" src="images/Model_Eval1.PNG">
   <br>
-  <img width="800" height="300" src="images/output_82_1.png">
+  <img width="800" height="300" src="images/Model_Eval1.PNG">
   <br>
-Swarm plot trend shows as the positive auxiliary nodes increase the survival rate decreases.
-<br>We see the blue dots (>5years) predominating in the case where stage __increases from N0 to N3__
-<br>And as the __stage increased from N0__ the __red__ dots started to outnumber the blue showing the __fall in the survival(<5years)__
-<br>Majority of deaths happened between 1958 and 1966 after that there was decline for both (<5 and >5 years)
+  <img width="800" height="300" src="images/Model_Eval1.PNG">
 </p>
-
-- __Violin Plot:__ Positive Axillary Nodes
-<p align="left">
-  <img width="800" height="300" src="images/output_67_2.png">
-  <br>
-  VIOLIN plot shows clearly that women who couldn't survive <5 years after operation was due to the contraction of high positive axillary lymph nodes which decreased the chances of their survival.
-</p>
-
-- __Distribution Plot__
-<p align="left">
-  <img width="800" height="300" src="images/output_74_1.png">
-  <br><img width="800" height="300" src="images/output_76_1.png">
-  <br><img width="800" height="300" src="images/output_79_1.png">
-  <br>
-  The age is normally distributed whereas the positive axillary nodes is right skewed.<br>
-  Age is normally distributed between >5year and <5years survivals and the mean is around 50 years for both.<br>
-  Majority of deaths happened between 1959 and 1966 after that there was declined due to good invention of better medications for both (<5 and >5 years)
-</p>
-
-- __Heat Plot:__ Pathologic staging / Survived Distribution
-<p align="left">
-  <img width="800" height="300" src="images/output_84_1.png">
-  <br>
-  There is positive correlation between Positive axillary nodes and Status(Survival) which is also proven by using the violin and swarm plot.
-</p>
-
-- Rate of patients __survival is more when postivie axillary numbers are low in number, which means initital stages of patholigical stage__
-- Rate of patients survival after 5 years __decreases__ as pathologic stage __progresess to next stage__
-- Stage __N0 as better chance than N3__
-
+  
 #### Hypothesis: More women with less axillary nodes are more likely to survive after 5 years
 
 ### CONCLUSION
