@@ -6,67 +6,74 @@
 </p>
 
 ### INTRODUCTION
-Breast cancer is cancer that develops from breast tissue. Signs of breast cancer may include a lump in the breast, a change in breast shape, dimpling of the skin, fluid coming from the nipple, a newly inverted nipple, or a red or scaly patch of skin.
+A large MNC and they have 9 broad verticals across the organisation. One of the problem my client is facing is around identifying the right people for promotion (only for manager position and below) and prepare them in time. Currently the process, they are following is:
 
-__TNM staging system__ The most commonly used tool that doctors use to describe the stage of the cancer. Doctors use the results from diagnostic tests and scans to answer these questions:<br/>
-
-  __Tumor (T):__ How large is the primary tumor? Where is it located?
-  __Node (N):__ Has the tumor spread to the lymph nodes? If so, where and how many?
-  __Metastasis (M):__ Has the cancer spread to other parts of the body? If so, where and how much?
-   The __“N”__ in the __TNM staging system__ stands for __lymph nodes__.<br/>
-  
-  __Clinical staging:__ Evaluates the lymph nodes __before the surgery__, based on other tests and/or a physical examination.
-  __Pathologic staging:__ Evaluates the lymph nodes __after the surgery__, which is a more accurate assessment.
-  
-      - NX: The lymph nodes were not evaluated.
-      - N0: Either No cancer was found in the lymph nodes or Only areas of cancer smaller than 0.2 mm are in the lymph nodes.
-      - N1: The cancer has spread to 1 to 3 axillary lymph nodes and/or the internal mammary lymph nodes.
-      - N2: The cancer has spread to 4 to 9 axillary lymph nodes. Or it has spread to the internal mammary lymph nodes, but not the     axillary lymph nodes.
-      - N3: The cancer has spread to 10 or more axillary lymph nodes. Or it has spread to the lymph nodes located under 
-      
-__Problem Statment :__ 
-- How many survived after 5 years and how many died before 5 years?
-- How the Positive axillary nodes (Pathologic staging) and survivals are related?
-- How Survivals and Age and Axillary nodes are related?
-- How the survivals and year of operation related?
+They first identify a set of employees based on recommendations/ past performance Selected employees go through the separate training and evaluation program for each vertical. These programs are based on the required skill of each vertical At the end of the program, based on various factors such as training performance, KPI completion (only employees with KPIs completed greater than 60% are considered) etc., employee gets promotion For above mentioned process, the final promotions are only announced after the evaluation and this leads to delay in transition to their new roles. Hence, company needs your help in identifying the eligible candidates at a particular checkpoint so that they can expedite the entire promotion cycle.
 
 ### DATA
-| Column Name             | Description                                                                                             |
-| -------------------     |:-------------                                                                                           | 
-| __Age__                 | Age of patient at time of operation (numerical)                                                         | 
-| __Years_of_operation__  | Patient's year of operation (year - 1900, numerical)                                                    |  
-| __Pos_axillary_nodes__  | Number of positive axillary nodes detected (numerical)                                                  | 
-| __Status__              | Surival status (class attribute) (1=patient survived 5 years or longer,2=patient died within 5 year)    |     
-### Data Profiling
-- In the upcoming sections we will first __understand our dataset__ using various pandas functionalities.
-- Then with the help of __pandas profiling__ we will find which columns of our dataset need preprocessing.
-- In __preprocessing__ we will deal with erronous and missing values of columns. 
-- Again we will do __pandas profiling__ to see how preprocessing have transformed our dataset.
+| Column Name          | Description                                                                                   |
+| -------------        |:-------------                                                                                :| 
+| employee_id	         | Unique ID for employee                                                                        | 
+| department	         | Department of employee                                                                        |  
+| region               | Region of employment (unordered)                                                              | 
+| education            | Education Level                                                                               |   
+| gender               | Gender of employee                                                                            |
+| recruitment_channel  | Channel of recruitment for employee                                                           |
+| no_of_trainings	     | no of other trainings completed in previous year on soft skills, technical skills etc.        |
+| age                  | Age of employee                                                                               |
+| previous_year_rating | Employee Rating for the previous year                                                         |
+| length_of_service    | Length of service in years                                                                    |
+| KPIs_met >80%        | if Percent of KPIs(Key performance Indicators) >80% then 1 else 0                             |
+| awards_won?          | if awards won during previous year then 1 else 0                                              |
+| avg_training_score   | Average score in current training evaluations                                                 |
+| is_promoted          | (Target) Recommended for promotion                                                            |         
+
+### Describe what are those parameters:
+- KPI - KPI is met > 80% - A boolean value telling us whether or not a given employee has met the KPI
+- age - Age of a given employee
+- avg_training_score - The average training score
+- awards_won - boolean value, it has won or not
+- department - 9 different departaments, categorical column
+- education - categorical column
+- gender - gonna change this categorical categorie, 0 female / 1 men
+- is_promoted - boolean value, has it got a promotion or not?
+- length_of_service - amount of time working for the company
+- no_of_trainings - number of trainings
+- previous_year_rating - rating given in the previous year, the higher the better
+- recruitment_channel - categorical category
+- region - different regions in this company
 
 ### Data preparation
-- There is no discrepancies found in the data 
-- Year of operation is of two digits
-- Found __44.4% zeros__ of __Pos_axillary_nodes__, but these are also __valid__ data, which indicates early stages of cancer – Either No cancer was found in the lymph nodes or only areas of cancer smaller than 0.2 mm are in the lymph nodes.
-- Converted two digits year of operation to four digits
-- Create additional column PAN_Stage which computes Pos_axillary_nodes and categorizes each patient with different pathological stages of cancer.
-- Create Survival Bracket column 
+- Missing values found in education and prev year rating
+- Fill previous rating with mean prev ratings and education with mode value of education - group by promotion
+- Gender categorie and Education is easily mapped into numerical ones
+
 <p align="left">
-  <img width="400" height="150" src="images/Data.PNG">
+  <img width="400" height="150" src="images/1.PNG">
 </p>
 
 ### Exploratory Data Analysis
+__Distribution of each columns__
 
-- __Count Plot:__ How many survived after 5 years and how many died before 5 years?
+- __Target Rate__
 <p align="left">
-  <img width="800" height="300" src="images/output_51_1.png">
-  <br>Notice that more people survied more than 5 Years. 
+  <img width="800" height="300" src="images/output_38_2">
+  <br>The dataset is slightly imbalance, where it is having only 8.5% of category-Not Promoted. 
 </p>
 
-- __Stacked Bar Plot:__ How the Positive axillary nodes (Pathologic staging) and survivals are related?
+- __Numerical features__ 
 <p align="left">
-  <img width="800" height="300" src="images/output_58_1.png">
+  <img width="800" height="300" src="images/output_43_0.png">
   <br>
-  <img width="800" height="300" src="images/output_70_2.png">
+  <img width="800" height="300" src="images/output_43_4">
+  <br>
+  <img width="800" height="300" src="images/output_45_1">
+  <br>
+  The age distribution is slighlty right skewed distribution, the peak of the distribution is 30 years
+it would be a good idea to map age and create 4 differente values for it, according to the distribution above:
+<=26 : 0 , > 27 < 35 : 1 , > 35 < 50, > 50
+  <br>
+  <img width="800" height="300" src="images/output_43_5">
 </p>
 
 - __PIE Plot:__ Pathologic staging / Survived Distribution
