@@ -73,13 +73,17 @@ __Distribution of each columns__
 it would be a good idea to map age and create 4 differente values for it, according to the distribution above:
 <=26 : 0 , > 27 < 35 : 1 , > 35 < 50, > 50
   <br>
-  <img width="800" height="300" src="images/output_43_5">
+  Distribution of age after mapping
+  <br>  
+  <img width="800" height="300" src="images/output_43_5.png">
 </p>
 
-- __PIE Plot:__ Pathologic staging / Survived Distribution
+- __Correlation Heatmap__
 <p align="left">
-  <img width="800" height="300" src="images/output_59_2.png">
-  <br><img width="800" height="300" src="images/output_71_3.png">
+  <img width="800" height="300" src="images/output_57_1.png">
+  <br>
+We see again from the correlation heatmap that almost all the variables are not directly correlated with promotion rate.
+The variables with the highest correlation (0.22 and 0.20 respectively) is whether the KPI is met and whether an award was won.  
 </p>
 
 - __Swarm Plot:__ Pathologic staging / Survived Distribution
