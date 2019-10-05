@@ -89,7 +89,7 @@ We see again from the correlation heatmap that almost all the variables are not 
 The variables with the highest correlation (0.22 and 0.20 respectively) is whether the KPI is met and whether an award was won.  
 </p>
 
-- __Model Evalution__
+- __Model Evaluation__
 
 <p align="
 left">
@@ -99,15 +99,23 @@ left">
   <br>
   <img width="800" height="300" src="images/Model_Eval1.PNG">
 </p>
-  
-#### Hypothesis: More women with less axillary nodes are more likely to survive after 5 years
+
+- __Find importance of features contributing to prediction__
+
+<p align="
+left">
+  <img width="800" height="300" src="images/output_123_1.png">
+  <br>
+  <img width="800" height="300" src="images/output_123_2.png">
+</p>
 
 ### CONCLUSION
-- With the help of this notebook we learnt how exploratory data analysis can be carried out using Pandas plotting.
-- Also we have seen making use of packages like __matplotlib and seaborn__ to develop better insights about the data.<br/>
-- We have also seen how __preproceesing__ helps in dealing with _missing_ values and irregualities present in the data. We also learnt how to _create new features_ which will in turn help us to better predict the survival. 
-- We also make use of __pandas profiling__ feature to generate an html report containing all the information of the various features present in the dataset.
-- We have seen the impact of columns like Age, postitive axillary nodes and year of operation on the __rate of survival > 5 years__
-- The most important inference drawn from all this analysis is, we get to know what are the __features on which survival is highly positively and negatively coorelated with.__ 
-- This analysis will help us to choose which __machine learning model__ we can apply to predict survival of test dataset. 
+- Since data set is imbalanced, we preferred to use F1 score & Recall rather than accuracy to measure the Model
 
+- The Model GradientBoostingClassifier with Under sample is providing good F1 & Recall Score, but the F1 Score reduced little bit when tested on non under sampled test data set
+
+- The Model XGBClassifier without hyper parameters & Under sampling is providing better F1 Score 0.91581 and also better recall 0.824987 among all
+
+- Either of above two models can be used for promotion prediction depending on business requirement 
+
+- Top five features are KPI, awards_won, previous_year_rating, department and avg_training_score which contributes for prediction
