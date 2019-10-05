@@ -2,7 +2,7 @@
 
 #### Predict the eligible candidates for Promotion
 <p align="center">
-  <img width="400" height="300" src="images/BreastCancer.jpg">
+  <img width="400" height="300" src="images/HR.jpg">
 </p>
 
 ### INTRODUCTION
@@ -57,7 +57,7 @@ __Distribution of each columns__
 
 - __Target Rate__
 <p align="left">
-  <img width="800" height="300" src="images/output_38_2">
+  <img width="800" height="300" src="images/output_38_2.png">
   <br>The dataset is slightly imbalance, where it is having only 8.5% of category-Not Promoted. 
 </p>
 
@@ -65,9 +65,9 @@ __Distribution of each columns__
 <p align="left">
   <img width="800" height="300" src="images/output_43_0.png">
   <br>
-  <img width="800" height="300" src="images/output_43_4">
+  <img width="800" height="300" src="images/output_43_4.png">
   <br>
-  <img width="800" height="300" src="images/output_45_1">
+  <img width="800" height="300" src="images/output_45_1.png">
   <br>
   The age distribution is slighlty right skewed distribution, the peak of the distribution is 30 years
 it would be a good idea to map age and create 4 differente values for it, according to the distribution above:
