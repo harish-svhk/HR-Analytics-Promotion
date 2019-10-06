@@ -95,9 +95,9 @@ The variables with the highest correlation (0.22 and 0.20 respectively) is wheth
 left">
   <img width="800" height="300" src="images/Model_Eval1.PNG">
   <br>
-  <img width="800" height="300" src="images/Model_Eval1.PNG">
+  <img width="800" height="300" src="images/Model_Eval2.PNG">
   <br>
-  <img width="800" height="300" src="images/Model_Eval1.PNG">
+  <img width="800" height="300" src="images/Model_Eval3.PNG">
 </p>
 
 - __Find importance of features contributing to prediction__
